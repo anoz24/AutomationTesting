@@ -25,10 +25,11 @@ public class LoginSignUpPage extends BasePage {
     private void setLoginButton(){
         clickButton(loginButton);
     }
-    public void loginAction(String email , String password){
+    public AuthedHomePage loginAction(String email , String password){
         setLoginEmail(email);
         setLoginPassword(password);
         setLoginButton();
+        return new AuthedHomePage(driver);
     }
 
     private void setSignUpName(String name){
