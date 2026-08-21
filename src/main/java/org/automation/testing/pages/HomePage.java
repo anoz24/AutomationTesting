@@ -7,6 +7,10 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    public boolean isHomePageVisible() {
+        return driver.getTitle().contains("Automation Exercise");
+    }
+
     public LoginSignUpPage navigateLoginSignup(){
         driver.get("https://www.automationexercise.com/login");
         return new LoginSignUpPage(driver);
