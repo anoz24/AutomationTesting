@@ -1,5 +1,6 @@
 package org.automation.testing.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HomePage extends BasePage {
@@ -7,12 +8,14 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public boolean isHomePageVisible() {
-        return driver.getTitle().contains("Automation Exercise");
+    private final By signupLoginLink = By.cssSelector("a[href='/login']");
+
+    public LoginSignUpPage navigateLoginSignup() {
+        clickButton(signupLoginLink);
+        return new LoginSignUpPage(driver);
     }
 
-    public LoginSignUpPage navigateLoginSignup(){
-        driver.get("https://www.automationexercise.com/login");
-        return new LoginSignUpPage(driver);
+    public boolean isHomePageVisible() {
+        return driver.getTitle().contains("Automation Exercise");
     }
 }

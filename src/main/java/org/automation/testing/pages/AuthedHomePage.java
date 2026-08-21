@@ -19,8 +19,8 @@ public class AuthedHomePage extends BasePage{
         clickButton(logOutButton);
     }
     
-    public HomePage logOutAction(){
+    public LoginSignUpPage logOutAction(){
         clickLogOutButton();
-        return new HomePage(driver);
+        return new LoginSignUpPage(driver);
     }
 }
