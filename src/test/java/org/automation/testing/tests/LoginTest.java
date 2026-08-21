@@ -4,14 +4,15 @@ import org.automation.testing.base.BaseTest;
 import org.automation.testing.pages.AuthedHomePage;
 import org.automation.testing.pages.HomePage;
 import org.automation.testing.pages.LoginSignUpPage;
+import org.automation.testing.utils.TestData;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.testng.Assert;
 
 public class LoginTest extends BaseTest {
-    public String validEmail = "Jonathan_Skiles@gmail.com";
-    public String validPassword = "123456789";
-    public String inValidEmail = "Joel@gmail.com";
+    public String validEmail = TestData.VALID_EMAIL;
+    public String validPassword = TestData.VALID_PASSWORD;
+    public String inValidEmail = TestData.INVALID_EMAIL;
 
     @Test
     public void validLoginTest() {
@@ -21,7 +22,7 @@ public class LoginTest extends BaseTest {
         softAssert.assertTrue(homePage.isHomePageVisible());
 
         LoginSignUpPage loginPage = homePage.navigateLoginSignup();
-        softAssert.assertTrue(loginPage.isLoginFormVisible());
+        softAssert.assertTrue(loginPage.isLoginHeadingVisible());
 
         AuthedHomePage authedPage = loginPage.loginAction(validEmail, validPassword);
         softAssert.assertTrue(authedPage.isLoggedIn());
@@ -35,9 +36,9 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(homePage.isHomePageVisible());
 
         LoginSignUpPage loginPage = homePage.navigateLoginSignup();
-        Assert.assertTrue(loginPage.isLoginFormVisible());
+        Assert.assertTrue(loginPage.isLoginHeadingVisible());
 
         loginPage.loginAction(inValidEmail, validPassword);
-        Assert.assertTrue(loginPage.isLoginFailedMessageDisplayed());
+        Assert.assertTrue(loginPage.isFailedLoginOrSignUpMessageDisplayed());
     }
 }
