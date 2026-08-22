@@ -24,16 +24,18 @@ public class HomePage extends BasePage {
         return new ContactUsPage(driver);
     }
 
-    public void navigateProducts() {
+    public AllProductsPage navigateProducts() {
         clickButton(productsLink);
+        return new AllProductsPage(driver);
     }
 
     public void navigateCart() {
         clickButton(cartLink);
     }
 
-    public void navigateTestCases() {
+    public TestCasesPage navigateTestCases() {
         clickButton(testCasesLink);
+        return new TestCasesPage(driver);
     }
 
     public boolean isHomePageVisible() {
